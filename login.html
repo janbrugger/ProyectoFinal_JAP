@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: rgb(248, 249, 250);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="d-flex justify-content-center align-items-center">
+    <form id="logForm" class="form-group mx-auto "> <!--agregue id al formulario-->
+      <div class="mt-4">
+        <img class="mb-4" src="img/login.png" alt="" width="400px">
+      </div>
+      <h1 class="h3 mb-3 fw-normal text-center">Please sign in</h1>
+
+      <div class="form-floating mx-auto m-2">
+        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating mx-auto m-2">
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="checkbox mt-3 mb-3">
+        <label>
+          <input type="checkbox" value="remember-me" id="chkbox"> Remember me <!-- agregue id al checkbox -->
+        </label>
+      </div>
+      
+      <div class="text-center">
+        <button class="w-auto btn btn-lg btn-primary" type="submit">Sign in</button>
+      </div>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+
+    </form>
+  </div>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+
+  <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
+    <p>Datos ingresados correctamente</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="alert alert-danger alert-dismissible fade" role="alert" id="alert-danger">
+    <p>El correo electronico o contraseña es incorrecta</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <script src="js/login.js"></script>
+  <script src="js/init.js"></script>
+</body>
