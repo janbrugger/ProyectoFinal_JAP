@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark p-1 shadow">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between" id="navbar">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div>
+      <div class="container" id="cart-container">
+        <h1 class="mt-4">Carrito de compras</h1>
+        <br>
+        <h3>Articulos a comprar</h3>
+        <br>
+        <table class="table-responsive col-12">
+          <thead>
+            <tr>
+              <th></th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="items"></tbody>
+        </table>
+      </div>
+      <div class="container">
+        <form name="formulario" class="row g-3 needs-validation" novalidate>
+          <h3>Tipo de envío</h3>
+          <div id="opciones" class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-secondary">
+              <input type="radio" class="form-check-input" name="options" id="option1" autocomplete="off"
+                onclick="showCostoDeEnvio()" checked required>Premium 2 a 5 dias (15%)
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" class="form-check-input" name="options" id="option2" autocomplete="off"
+                onclick="showCostoDeEnvio()" required>Express 5 a 8 dias (7%)
+            </label>
+            <label class="btn btn-secondary">
+              <input type="radio" class="form-check-input" name="options" id="option3" autocomplete="off"
+                onclick="showCostoDeEnvio()" required>Standard 12 a 15 dias (5%)
+            </label>
+          </div>
+
+          <small id="mensajeNoTipoEnvio" class="mt-1" style="color:rgba(220,53,69,.9); display:none;">Debes elegir el
+            tipo de envio</small>
+          <br> <br>
+
+          <!-- Dirección de envio -->
+          <div class="col">
+            <h3>Dirección de envío</h3>
+
+            <div class="row mb-2">
+              <div class="col-6 col-md-5 col-lg-5">
+                <label for="Departamento" id="Dpto" class="form-label">Departamento</label>
+                <select class="form-select" id="Departamento" required>
+                  <option selected disabled value="">Selecciona...</option>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar un departamento
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-4">
+                <label for="ciudades" class="form-label">Ciudad:</label>
+                <select class="form-select" id="ciudades" required>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar una ciudad
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="col-6 col-md-5 col-lg-5">
+                <label for="inputAddress" class="form-label">Calle:</label>
+                <input type="text" class="form-control" name="inputAddress" id="inputAddress"
+                  placeholder="Ansina esq. Espinosa" required>
+                <div class="invalid-feedback">
+                  Ingresa una calle
+                </div>
+              </div>
+
+              <div class="col-6 col-md-4 col-lg-4">
+                <label for="inputNumber" class="form-label">Número:</label>
+                <input type="number" min="1" class="form-control" name="inputNumber" id="inputNumber" placeholder="1234"
+                  required>
+                <div class="invalid-feedback">
+                  Ingresa un número
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="form-group col-6 col-md-5 col-lg-5">
+                <label for="inputCorner" class="form-label">Esquina:</label>
+                <input type="text" class="form-control" name="inputCorner" id="inputCorner"
+                  placeholder="Esquina Gastón Ramón" required>
+                <div class="invalid-feedback">
+                  Ingresa una esquina
+                </div>
+              </div>
+            </div>
+
+            <div id="mapDiv" class="container mt-5">
+            </div>
+          </div>
+
+          <br><br>
+
+          <hr />
+
+          <!-- Costos de envio -->
+          <div class="container">
+            <h2 class="p-3">Costos</h2>
+            <div class="row border p-3">
+              <div class="col-9 m-0">
+                <h3 class="subtotal">Subtotal</h3>
+                <p class="muted">costo unitario de envio</p>
+              </div>
+              <div class="col-3">
+                <h3 id="precioSubtotal" class="float-end h4">$$$</h3>
+              </div>
+            </div>
+
+            <div class="row border p-3">
+              <div class="col-9 m-0">
+                <h3 class="">Costo de envio</h3>
+                <p class="muted">segun el tipo de envio</p>
+              </div>
+              <div class="col-3">
+                <h3 id="precioCostoDeEnvio" class="float-end h4">$$$</h3>
+              </div>
+            </div>
+
+            <div class="row border p-3">
+              <div class="col-9 m-0">
+                <h3 class="align-middle">Total</h3>
+              </div>
+              <div class="col-3">
+                <h3 id="precioTotal" class="float-end h4">$$$</h3>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="container">
+            <h3>Forma de pago</h3>
+
+            <!-- Button modal -->
+            <div class="d-flex align-items-center">
+              <div id="miDiv" required>
+                No ha seleccionado
+              </div>
+              <div>
+                <button id="buttonSelect" type="button" class="btn btn-link" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">
+                  Seleccionar
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Forma de pago</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                  <div id="tarjCredito" class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" id="radio1" onclick="tarjeta()"
+                      required>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Tarjeta de crédito
+                    </label>
+                    <hr>
+                    <div class="form-group" id="card-number-field">
+                      <label for="cardNumber">Número de tarjeta</label>
+                      <input type="text" required class="form-control" id="cardNumber">
+                    </div> <br>
+                    <div class="form-group">
+                      <label for="cvv">Código de seg.</label>
+                      <input type="text" maxlength="3" required class="form-control" id="cvv">
+                    </div> <br>
+                    <div required class="form-group" id="expiration-date">
+                      <label>Vencimiento</label>
+                      <span class="expiration">
+                        <input required id="expiry" type="text" name="month" placeholder="MM" maxlength="2" size="2" />
+                        <span class="expiration">/</span>
+                        <input id="expiry1" type="text" name="year" placeholder="YY" maxlength="2" size="2" /> </span>
+                    </div><br>
+                  </div>
+                  <div id="transfBancaria" class="form-check">
+                    <input class="form-check-input" type="radio" name="radioDefault" onclick="cuentaBancaria()"
+                      id="radio2" required>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Transferencia bancaria
+                    </label>
+                    <hr>
+                    <div>
+                      <label for="cuentab">Número de cuenta</label>
+                      <input class="form-group form-control" id="cuentaban" type="text" name="cuentab" required>
+                    </div> <br>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 text-center">
+            <button id="btnSubmit" class="btn btn-primary" type="submit">Finalizar compra</button>
+          </div>
+          <br> <br>
+        </form>
+      </div>
+    </div>
+
+
+
+
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div id="divThemeMenu">
+    <!-- <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert-success">
+      <p>¡Haz comprado con éxito!</p>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div> -->
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&callback=initMap" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="css/styles.css" rel="stylesheet">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .image-container {
+            width: 100px; 
+            height: 100px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc; 
+            object-fit: cover;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark p-1 shadow">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between" id="navbar">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <div class="container" id="container-profile">
+      <div class="alert alert-danger text-center" role="alert" hidden>
+        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      </div>
+      <form id="form" action="#" method="get" class="row mt-4 needs-validation" novalidate>
+        <div id="profile" class="container d-flex justify-content-between">
+          <h1 class="mt-4">Perfil</h1>
+          <img id="uploadedImage" alt="Imagen" class="image-container" src="img/silueta.webp";>
+        </div>
+      <hr class="my-4">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="nombre" class="form-label">Primer nombre*</label>
+              <input type="text" class="form-control" name= "nombre" id="nombre" required>
+              <div class="invalid-feedback">
+                Campo obligatorio
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="nombre2" class="form-label">Segundo nombre</label>
+              <input type="text" class="form-control" name="nombre2" id="nombre2">
+              <div class="invalid-feedback">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="apellido" class="form-label">Primer apellido*</label>
+              <input type="text" class="form-control" name="apellido" id="apellido" required>
+              <div class="invalid-feedback">
+                Campo obligatorio
+              </div>
+            </div>
+
+        
+            <div class="col-sm-6">
+              <label for="apellido2" class="form-label">Segundo apellido</label>
+              <input type="text" class="form-control" name="apellido2" id="apellido2">
+              <div class="invalid-feedback">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="example@example.com"required disabled>
+              <div class="invalid-feedback">
+                Campo obligatorio     
+             </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="image" class="form-label">Imagen de perfil</label>
+              <input type="file" id="fileInput">
+              <button type="button" id="uploadButton">Subir Archivo</button>
+          </div>
+          
+          <!-- Alerta de error de imagen-->
+    <div class="alert alert-danger fade" id="error-alert" role="alert">
+      ¡Debes seleccionar una imagen!
+      </div>
+
+            <div class="col-sm-6">
+              <label for="contacto" class="form-label">Teléfono de contacto*</label>
+              <input type="number" class="form-control" id="contacto" required>
+              <div class="invalid-feedback">
+                Campo obligatorio
+              </div>
+            </div>
+            
+          
+        <button class="btn btn-primary" type="submit">Guardar cambios</button>
+         <!-- Alerta de éxito -->
+    <div class="alert alert-success fade" id="success-alert" role="alert">
+    ¡Datos guardados con éxito!
+    </div>
+    </div>
+</form>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <div id="divThemeMenu"></div>
+
+  <div class="alert alert-success alert-dismissible fade" role="alert" id="alert-success">
+    <p>Datos guardados correctamente</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/my-profile.js"></script>
+</body>
+
+</html>
